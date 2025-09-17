@@ -46,7 +46,7 @@ public class ReservationResource {
         List<Reservation> reservations = reservationsRepository.findAll();
         for (Reservation reservation : reservations) {
             if (reservation.isReserved(startDate, endDate)) {
-                carsById.remove(reservation.id);
+                carsById.remove(reservation.carId);
             }
         }
         return carsById.values();

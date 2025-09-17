@@ -5,6 +5,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.jboss.resteasy.reactive.RestPath;
 
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicLong;
@@ -17,7 +18,7 @@ public class RentalResource {
     @Path("start/{userId}/{reservationId}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Rental start(String userId, Long reservationId) {
+    public Rental start(@RestPath String userId, @RestPath Long reservationId) {
         Log.infof("Start rental: userId = %s, reservationId = %s", userId, reservationId);
         return new Rental(id.incrementAndGet(), userId, reservationId, LocalDate.now());
     }
