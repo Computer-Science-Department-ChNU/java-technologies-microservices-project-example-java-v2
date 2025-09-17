@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.reservetion.inventory;
+package ua.edu.chnu.kkn.inventory.model;
 
 import java.util.Objects;
 
@@ -9,11 +9,9 @@ public class Car {
     public String manufacturer;
     public String model;
 
-    public Car() {
-    }
+    public Car() {}
 
-    public Car(Long id, String licensePlateNumber, String manufacturer, String model) {
-        this.id = id;
+    public Car(String licensePlateNumber, String manufacturer, String model) {
         this.licensePlateNumber = licensePlateNumber;
         this.manufacturer = manufacturer;
         this.model = model;

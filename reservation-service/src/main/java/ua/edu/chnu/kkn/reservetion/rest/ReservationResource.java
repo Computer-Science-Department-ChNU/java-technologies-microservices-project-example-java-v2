@@ -1,11 +1,13 @@
 package ua.edu.chnu.kkn.reservetion.rest;
 
 import io.quarkus.logging.Log;
+import io.smallrye.graphql.client.GraphQLClient;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.RestQuery;
 import ua.edu.chnu.kkn.reservetion.inventory.Car;
+import ua.edu.chnu.kkn.reservetion.inventory.GraphQLInventoryClient;
 import ua.edu.chnu.kkn.reservetion.inventory.InventoryClient;
 import ua.edu.chnu.kkn.reservetion.rental.Rental;
 import ua.edu.chnu.kkn.reservetion.rental.RentalClient;
@@ -25,11 +27,11 @@ public class ReservationResource {
 
     public ReservationResource(
             ReservationsRepository reservationsRepository,
-            InventoryClient inventoryClient,
+            @GraphQLClient("inventory") GraphQLInventoryClient inventoryClient,
             @RestClient RentalClient rentalClient) {
         this.reservationsRepository = reservationsRepository;
-        this.inventoryClient = inventoryClient;
         this.rentalClient = rentalClient;
+        this.inventoryClient = inventoryClient;
     }
 
     @GET
@@ -41,7 +43,7 @@ public class ReservationResource {
         List<Car> availableCars = inventoryClient.allCars();
         Map<Long, Car> carsById = new HashMap<>();
         for (Car car : availableCars) {
-            carsById.put(car.id(), car);
+            carsById.put(car.id, car);
         }
         List<Reservation> reservations = reservationsRepository.findAll();
         for (Reservation reservation : reservations) {
