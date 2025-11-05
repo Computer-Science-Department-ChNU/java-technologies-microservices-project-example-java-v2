@@ -2,8 +2,10 @@ package ua.edu.chnu.kkn.reservetion.rest;
 
 import io.quarkus.logging.Log;
 import io.smallrye.graphql.client.GraphQLClient;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.SecurityContext;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.RestQuery;
 import ua.edu.chnu.kkn.reservetion.inventory.Car;
@@ -16,10 +18,14 @@ import ua.edu.chnu.kkn.reservetion.reservation.ReservationsRepository;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Path("reservation")
 @Produces(MediaType.APPLICATION_JSON)
 public class ReservationResource {
+
+    @Inject
+    SecurityContext context;
 
     private final ReservationsRepository reservationsRepository;
     private final InventoryClient inventoryClient;
@@ -57,13 +63,25 @@ public class ReservationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @POST
     public Reservation create(Reservation reservation) {
+        reservation.userId = context.getUserPrincipal() != null ?
+                context.getUserPrincipal().getName() : "anonymous";
         Reservation result = reservationsRepository.save(reservation);
-        // this is just a dummy value for the time being
-        String userId = "x";
         if (reservation.startDay.equals(LocalDate.now())) {
-            Rental rental = rentalClient.start(userId, result.id);
-            Log.info("Successfully start rental " + rental);
+            Rental rental = rentalClient.start(reservation.userId, result.id);
+            Log.info("Successfully started rental " + rental);
         }
         return result;
+    }
+
+    @GET
+    @Path("all")
+    public Collection<Reservation> allReservations() {
+        String userId = context.getUserPrincipal() != null ?
+                context.getUserPrincipal().getName() : null;
+        return reservationsRepository.findAll()
+                .stream()
+                .filter(reservation -> userId == null ||
+                        userId.equals(reservation.userId))
+                .toList();
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Reservation {
+    public String userId;
     public Long id;
     public final Long carId;
     public final LocalDate startDay;
