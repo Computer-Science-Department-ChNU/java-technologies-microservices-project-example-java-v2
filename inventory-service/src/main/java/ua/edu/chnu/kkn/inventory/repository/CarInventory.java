@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.inventory.database;
+package ua.edu.chnu.kkn.inventory.repository;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
