@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.reservetion.inventory;
+package ua.edu.chnu.kkn.reservation.inventory;
 
 import io.smallrye.graphql.client.typesafe.api.GraphQLClientApi;
 import org.eclipse.microprofile.graphql.Query;

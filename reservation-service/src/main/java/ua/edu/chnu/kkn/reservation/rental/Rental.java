@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.reservetion.rental;
+package ua.edu.chnu.kkn.reservation.rental;
 
 import java.time.LocalDate;
 

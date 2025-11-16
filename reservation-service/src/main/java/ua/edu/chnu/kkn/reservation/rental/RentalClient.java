@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.reservetion.rental;
+package ua.edu.chnu.kkn.reservation.rental;
 
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;

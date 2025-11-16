@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.reservetion.inventory;
+package ua.edu.chnu.kkn.reservation.inventory;
 
 import java.util.List;
 
