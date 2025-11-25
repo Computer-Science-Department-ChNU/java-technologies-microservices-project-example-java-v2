@@ -6,12 +6,8 @@ import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import org.acme.inventory.model.CarResponse;
-import org.acme.inventory.model.InsertCarRequest;
-import org.acme.inventory.model.InventoryService;
-import org.acme.inventory.model.RemoveCarRequest;
+import ua.edu.chnu.kkn.inventory.model.*;
 import ua.edu.chnu.kkn.inventory.repository.CarInventory;
-import ua.edu.chnu.kkn.inventory.model.Car;
 import ua.edu.chnu.kkn.inventory.repository.CarRepository;
 
 import java.util.Optional;

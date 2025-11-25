@@ -3,9 +3,6 @@ package ua.edu.chnu.kkn.inventorycli;
 import io.quarkus.grpc.GrpcClient;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-import org.acme.inventory.model.InsertCarRequest;
-import org.acme.inventory.model.InventoryService;
-import org.acme.inventory.model.RemoveCarRequest;
 
 @QuarkusMain
 public class InventoryCommand implements QuarkusApplication {
