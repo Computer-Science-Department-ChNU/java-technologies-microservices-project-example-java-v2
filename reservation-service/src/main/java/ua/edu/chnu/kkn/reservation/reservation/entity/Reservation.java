@@ -1,6 +1,6 @@
 package ua.edu.chnu.kkn.reservation.reservation.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 
 import java.time.LocalDate;
