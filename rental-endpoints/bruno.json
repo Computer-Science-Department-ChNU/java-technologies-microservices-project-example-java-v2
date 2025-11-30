@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "rental-endpoints",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

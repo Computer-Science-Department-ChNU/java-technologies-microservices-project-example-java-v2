@@ -1,6 +1,6 @@
 package ua.edu.chnu.kkn.reservation.rest;
 
-import io.quarkus.hibernate.reactive.rest.data.panache.PanacheEntityResource;
+import io.quarkus.hibernate.orm.rest.data.panache.PanacheEntityResource;
 import io.quarkus.rest.data.panache.ResourceProperties;
 import ua.edu.chnu.kkn.reservation.reservation.entity.Reservation;
 

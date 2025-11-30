@@ -15,6 +15,7 @@ public class Rental extends PanacheMongoEntity {
     public LocalDate startDate;
     public LocalDate endDate;
     public boolean active;
+    public boolean paid;
 
     public static Optional<Rental> findByUserAndReservationIdsOptional(String userId, Long reservationId) {
         return find("userId = ?1 and reservationId = ?2", userId, reservationId)
@@ -33,6 +34,7 @@ public class Rental extends PanacheMongoEntity {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", active=" + active +
+                ", paid=" + paid +
                 '}';
     }
 }

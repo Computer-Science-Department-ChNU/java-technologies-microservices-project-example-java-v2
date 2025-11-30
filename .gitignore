@@ -1,1 +1,9 @@
 /.idea/
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/model/Invoice$Reservation.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/model/Invoice.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/model/InvoiceAdjust.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/model/InvoiceConfirmation.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/InvoiceProcessor.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/InvoiceResource.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/PaymentRequester.class
+/out/production/java-technologies-microservices-project-example-java-v2/ua/edu/chnu/kkn/billing/model/ReservationInvoice.class

@@ -14,6 +14,7 @@ import ua.edu.chnu.kkn.rental.reservation.ReservationClient;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 @Path("rental")
 public class RentalResource {
@@ -36,12 +37,21 @@ public class RentalResource {
     @POST
     public Rental start(@RestPath String userId, @RestPath Long reservationId) {
         Log.infof("Start rental: userId = %s, reservationId = %s", userId, reservationId);
-        Rental rental = new Rental();
-        rental.userId = userId;
-        rental.reservationId = reservationId;
-        rental.startDate = LocalDate.now();
-        rental.active = true;
-        rental.persist();
+        Optional<Rental> rentalOptional = Rental
+                .findByUserAndReservationIdsOptional(userId, reservationId);
+        Rental rental;
+        if (rentalOptional.isPresent()) {
+            rental = rentalOptional.get();
+            rental.active = true;
+            rental.update();
+        } else {
+            rental = new Rental();
+            rental.userId = userId;
+            rental.reservationId = reservationId;
+            rental.startDate = LocalDate.now();
+            rental.active = true;
+            rental.persist();
+        }
         return rental;
     }
 
@@ -53,6 +63,9 @@ public class RentalResource {
         Rental rental = Rental
                 .findByUserAndReservationIdsOptional(userId, reservationId)
                 .orElseThrow(() -> new NotFoundException("Rental not found"));
+        if (!rental.paid) {
+            Log.warn("Rental is not paid: " + rental);
+        }
         Reservation reservation = reservationClient
                 .getById(reservationId);
         LocalDate today = LocalDate.now();
