@@ -14,6 +14,7 @@ public class InvoiceConfirmationService {
         if (!invoiceConfirmation.paid) {
             Log.warn("Received unpaid invoice confirmation - "
                     + invoiceConfirmation);
+            return;
         }
         InvoiceConfirmation.InvoiceReservation reservation =
                 invoiceConfirmation.invoice.reservation;

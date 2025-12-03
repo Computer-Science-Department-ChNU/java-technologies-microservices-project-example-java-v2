@@ -8,5 +8,6 @@ public class InvoiceConfirmation {
 
     public InvoiceConfirmation(Invoice invoice, boolean paid) {
         this.invoice = invoice;
+        this.paid = paid;
     }
 }
