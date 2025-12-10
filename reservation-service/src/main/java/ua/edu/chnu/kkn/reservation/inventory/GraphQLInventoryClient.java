@@ -1,11 +1,13 @@
 package ua.edu.chnu.kkn.reservation.inventory;
 
+import io.quarkus.oidc.token.propagation.common.AccessToken;
 import io.smallrye.graphql.client.typesafe.api.GraphQLClientApi;
 import org.eclipse.microprofile.graphql.Query;
 
 import java.util.List;
 
 @GraphQLClientApi(configKey = "inventory")
+@AccessToken
 public interface GraphQLInventoryClient extends InventoryClient {
 
     @Query("cars")
